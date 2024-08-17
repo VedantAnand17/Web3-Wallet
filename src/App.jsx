@@ -3,12 +3,14 @@ import { generateMnemonic } from "bip39";
 import { SolanaWallet } from './components/SolanaWallet';
 import { EthWallet } from './components/ETHWallet';
 import MnemonicContainer from './components/MnemonicContainer';
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   const [mnemonic, setMnemonic] = useState("");
 
   return (
     <>
+    <Analytics />
       <div className="bg-neutral-400 rounded-2xl flex flex-col justify-center items-center h-screen">
         <h1 className='text-6xl font-bold text-center mt-8'>Wallet Generator</h1>
         <MnemonicContainer mnemonic={mnemonic} />
