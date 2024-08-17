@@ -7,7 +7,7 @@ export const EthWallet = ({mnemonic}) => {
     const [addresses, setAddresses] = useState([]);
 
     return (
-        <div>
+        <div className="flex flex-col items-center">
             <button className="bg-rose-500 p-2 rounded-3xl m-8" onClick={async function() {
                 const seed = await mnemonicToSeed(mnemonic);
                 const derivationPath = `m/44'/60'/${currentIndex}'/0'`;

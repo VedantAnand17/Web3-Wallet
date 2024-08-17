@@ -8,7 +8,7 @@ export function SolanaWallet({ mnemonic }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [publicKeys, setPublicKeys] = useState([]);
 
-    return <div>
+    return <div className="flex flex-col items-center">
         <button className="bg-rose-500 p-2 rounded-3xl m-8" onClick={function() {
             const seed = mnemonicToSeed(mnemonic);
             const path = `m/44'/501'/${currentIndex}'/0'`;
