@@ -11,7 +11,7 @@ function App() {
   return (
     <>
     <Analytics />
-      <div className="bg-neutral-400 rounded-2xl flex flex-col justify-center items-center h-screen">
+      <div className="bg-neutral-400 rounded-2xl flex flex-col justify-center items-center h-full min-h-screen">
         <h1 className='text-6xl font-bold text-center mt-8'>Wallet Generator</h1>
         <MnemonicContainer mnemonic={mnemonic} />
         <button className='bg-rose-500 p-2 rounded-3xl mt-8 ' onClick={async function () {
@@ -20,7 +20,7 @@ function App() {
         }}>
           Create Seed Phrase
         </button>
-        <div className="flex lg:justify-between lg:flex-row flex-col items-center">
+        <div className="flex lg:justify-between lg:flex-row flex-col items-center pb-5">
           {mnemonic && <SolanaWallet mnemonic={mnemonic} />}
           {mnemonic && <EthWallet mnemonic={mnemonic} />}
         </div>

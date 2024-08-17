@@ -21,7 +21,7 @@ export const EthWallet = ({mnemonic}) => {
                 Add Ethereum wallet
             </button>
 
-            {addresses.map(p => <div>
+            {addresses.map(p => <div className="max-md:text-xs">
                 Eth - {p}
             </div>)}
         </div>

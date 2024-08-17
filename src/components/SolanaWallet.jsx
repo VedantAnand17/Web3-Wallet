@@ -20,8 +20,10 @@ export function SolanaWallet({ mnemonic }) {
         }}>
             Add Solana wallet
         </button>
-        {publicKeys.map(p => <div>
+        <div className="max-md:text-xs">
+        {publicKeys.map(p => <div className="shrink">
             {p.toBase58()}
         </div>)}
+        </div>
     </div>
 }
