@@ -94,6 +94,7 @@ yarn start
 The application will run at `http://localhost:3000`. Open this URL in your browser to view the Wallet Generator.
 
 ## Project Structure
+**Note:** This structure is alterable.
 
 ```
 Web3-Wallet/
