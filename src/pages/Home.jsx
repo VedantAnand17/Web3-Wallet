@@ -27,7 +27,7 @@ function Home() {
   };
 
   const handleNavigateToDAppBrowser = () => {
-    navigate('/dapp-browser'); // Navigate to DAppBrowserPage
+    navigate('/dapp-browser'); 
   };
 
   return (
@@ -48,13 +48,6 @@ function Home() {
         {mnemonic && <SolanaWallet mnemonic={mnemonic} />}
         {mnemonic && <EthWallet mnemonic={mnemonic} />}
       </div>
-
-      <button
-        className="p-2 rounded-3xl mt-8 bg-blue-500 hover:bg-blue-600 transition-all duration-300 ease-in-out"
-        onClick={handleNavigateToDAppBrowser}
-      >
-        Go to DApp Browser
-      </button>
     </div>
   );
 }
