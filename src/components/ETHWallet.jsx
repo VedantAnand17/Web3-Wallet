@@ -2,7 +2,7 @@ import { useState } from "react";
 import { mnemonicToSeed } from "bip39";
 import { Wallet, HDNodeWallet } from "ethers";
 
-export const EthWallet = ({ mnemonic }) => {
+const EthWallet = ({ mnemonic }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [addresses, setAddresses] = useState([]);
     const [buttonText, setButtonText] = useState('Add Ethereum Wallet');
@@ -49,3 +49,5 @@ export const EthWallet = ({ mnemonic }) => {
         </div>
     );
 };
+
+export default EthWallet;

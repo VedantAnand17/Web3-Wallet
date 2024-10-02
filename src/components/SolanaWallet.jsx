@@ -4,7 +4,7 @@ import { derivePath } from "ed25519-hd-key";
 import { Keypair } from "@solana/web3.js";
 import nacl from "tweetnacl";
 
-export function SolanaWallet({ mnemonic }) {
+function SolanaWallet({ mnemonic }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [publicKeys, setPublicKeys] = useState([]);
     const [buttonText, setButtonText] = useState('Add Solana Wallet');
@@ -52,3 +52,5 @@ export function SolanaWallet({ mnemonic }) {
         </div>
     );
 }
+
+export default SolanaWallet; // Default export
