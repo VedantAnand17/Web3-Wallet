@@ -19,12 +19,6 @@ const Navbar = () => {
           <Link to="/" className="hover:text-blue-300 transition duration-300 ease-in-out font-medium">
             Home
           </Link>
-          <Link to="/services" className="hover:text-blue-300 transition duration-300 ease-in-out font-medium">
-            Services
-          </Link>
-          <Link to="/contact" className="hover:text-blue-300 transition duration-300 ease-in-out font-medium">
-            Contact
-          </Link>
         </div>
 
         {/* Call-to-Action Button (Optional) */}
