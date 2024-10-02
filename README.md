@@ -33,8 +33,6 @@
 
 ![Wallet Generator Demo](path-to-your-demo-image.gif)
 
-_Note: Replace `path-to-your-demo-image.gif` with the actual path to your demo image or GIF._
-
 ## Getting Started
 
 Follow these instructions to set up and run the project locally.
@@ -176,7 +174,7 @@ This project is licensed under the [MIT License](LICENSE).
 If you have any questions, suggestions, or feedback, feel free to reach out!
 
 - **Author:** Vedant Anand
-- **Email:** vedant.anand@example.com
+- **Email:** vedantanand.in@gmail.com
 - **GitHub:** [VedantAnand17](https://github.com/VedantAnand17)
 
 ---
