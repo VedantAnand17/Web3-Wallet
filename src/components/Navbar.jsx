@@ -8,7 +8,7 @@ const Navbar = () => {
       <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center">
           <Globe className="mr-2" />
-          <h1 className="text-2xl font-bold">Web-3 Wallet</h1>
+          <h1 className="text-2xl font-bold">Web3-Wallet</h1>
         </div>
         <div className="space-x-4">
           <Link to="/" className="hover:text-blue-400 transition duration-300">
