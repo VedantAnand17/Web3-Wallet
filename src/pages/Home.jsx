@@ -1,55 +1,103 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { generateMnemonic } from 'bip39';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { motion } from 'framer-motion';
+import { ChevronDownIcon } from 'lucide-react';
 import SolanaWallet from '../components/SolanaWallet';
 import EthWallet from '../components/ETHWallet';
 import MnemonicContainer from '../components/MnemonicContainer';
 
-function Home() {
+const Home = () => {
   const [mnemonic, setMnemonic] = useState('');
   const [buttonText, setButtonText] = useState('Create Seed Phrase');
   const [isMnemonicGenerated, setIsMnemonicGenerated] = useState(false);
-  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleGenerateMnemonic = async () => {
     const mn = await generateMnemonic();
     setMnemonic(mn);
 
     if (!isMnemonicGenerated) {
-      setButtonText('Phrase Changed!');
+      setButtonText('Phrase Generated!');
       setIsMnemonicGenerated(true);
 
       setTimeout(() => {
-        setButtonText('Create Seed Phrase');
+        setButtonText('Create New Seed Phrase');
         setIsMnemonicGenerated(false);
-      }, 1000);
+      }, 2000);
     }
   };
 
-  const handleNavigateToDAppBrowser = () => {
-    navigate('/dapp-browser'); 
-  };
-
   return (
-    <div className="bg-neutral-400 rounded-2xl flex flex-col justify-center items-center h-full min-h-screen">
-      <h1 className="text-6xl font-bold text-center mt-8">Wallet Generator</h1>
-      <MnemonicContainer mnemonic={mnemonic} />
+    <div className="bg-gradient-to-b from-gray-900 to-gray-800 min-h-screen text-white"> 
+      {/* Hero Section */}
+      <section className="relative h-full min-h-screen flex flex-col justify-center items-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <video autoPlay loop muted className="w-full h-full object-cover">
+            <source src="/videos/crypto-background.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-black opacity-60"></div>
+        </div>
 
-      <button
-        className={`p-2 rounded-3xl mt-8 transition-all duration-300 ease-in-out ${
-          isMnemonicGenerated ? 'bg-green-500' : 'bg-rose-500'
-        } hover:bg-green-600 hover:scale-105`}
-        onClick={handleGenerateMnemonic}
-      >
-        {buttonText}
-      </button>
+        <div className="relative z-10 text-center px-4">
+          <motion.h1 
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="text-5xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mt-8 mb-10"
+          >
+            Unlock the Future of Crypto
+          </motion.h1>
 
-      <div className="flex lg:justify-between lg:flex-row flex-col items-center pb-5">
-        {mnemonic && <SolanaWallet mnemonic={mnemonic} />}
-        {mnemonic && <EthWallet mnemonic={mnemonic} />}
-      </div>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 1 }}
+            className="text-xl lg:text-2xl text-gray-300 max-w-2xl mx-auto mb-10"
+          >
+            Securely generate your seed phrases and manage your Solana and Ethereum wallets. All in one place.
+          </motion.p>
+
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={handleGenerateMnemonic}
+            className="px-8 py-4 text-lg font-semibold bg-gradient-to-r from-purple-500 to-pink-500 rounded-full shadow-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 mb-12"
+          >
+            {buttonText}
+          </motion.button>
+        </div>
+
+        {/* Mnemonic and Wallets Section */}
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 flex flex-col items-center w-full max-w-3xl mx-auto"
+        >
+          {mnemonic && (
+            <>
+              <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl shadow-xl backdrop-blur-lg border border-gray-700 mb-12 w-full">
+                <MnemonicContainer mnemonic={mnemonic} />
+              </div>
+
+              <div className="flex flex-col lg:flex-row lg:justify-center items-stretch space-y-8 lg:space-y-0 lg:space-x-10 w-full">
+                <SolanaWallet mnemonic={mnemonic} />
+                <EthWallet mnemonic={mnemonic} />
+              </div>
+            </>
+          )}
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        >
+          <ChevronDownIcon className="w-10 h-10 text-white animate-bounce" />
+        </motion.div>
+      </section>
     </div>
   );
-}
+};
 
 export default Home;

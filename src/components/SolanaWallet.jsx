@@ -32,7 +32,7 @@ function SolanaWallet({ mnemonic }) {
     };
 
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center mb-10">
             <button
                 className={`p-2 rounded-3xl m-8 transition-all duration-300 ease-in-out ${
                     isWalletAdded ? 'bg-green-500' : 'bg-rose-500'

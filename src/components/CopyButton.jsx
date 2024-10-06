@@ -1,40 +1,42 @@
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Copy, CheckCircle } from 'lucide-react';
 
-export default function MnemonicCard({ word }) {
-    const [buttonText, setButtonText] = useState('Copy Seed Phrase');
-    const [isCopied, setIsCopied] = useState(false); // State to track if the text is copied
+const CopyButton = ({ text }) => {
+  const [isCopied, setIsCopied] = useState(false);
 
-    const handleClick = () => {
-        navigator.clipboard.writeText(word)
-            .then(() => {
-                setButtonText('Copied!');
-                setIsCopied(true); // Set copied state to true
-                setTimeout(() => {
-                    setButtonText('Copy Seed Phrase');
-                    setIsCopied(false); // Reset copied state after 2 seconds
-                }, 2000);
-            })
-            .catch(err => {
-                console.error('Failed to copy text: ', err);
-            });
-    };
+  const handleCopy = () => {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        setIsCopied(true);
+        setTimeout(() => setIsCopied(false), 2000);
+      })
+      .catch(err => console.error('Failed to copy text: ', err));
+  };
 
-    return (
-        <div>
-            <button
-                className={`p-2 rounded-3xl mt-8 transition-all duration-300 ease-in-out ${
-                    isCopied ? 'bg-green-500' : 'bg-rose-500'
-                } hover:bg-green-600 hover:scale-105`}
-                onClick={handleClick}
-            >
-                {buttonText}
-            </button>
-        </div>
-    );
-}
-
-// Adding prop-types validation
-MnemonicCard.propTypes = {
-    word: PropTypes.string.isRequired,
+  return (
+    <motion.button
+      className={`flex items-center justify-center space-x-2 p-3 rounded-full text-white transition-all duration-300 ${
+        isCopied
+          ? 'bg-green-500 hover:bg-green-600'
+          : 'bg-indigo-500 hover:bg-indigo-600'
+      }`}
+      onClick={handleCopy}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
+    >
+      {isCopied ? <CheckCircle size={24} /> : <Copy size={24} />}
+      <span>{isCopied ? 'Copied' : 'Copy'}</span>
+    </motion.button>
+  );
 };
+
+CopyButton.propTypes = {
+  text: PropTypes.string.isRequired,
+};
+
+export default CopyButton;
