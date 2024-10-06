@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { generateMnemonic } from 'bip39';
 import { motion } from 'framer-motion';
-import { ChevronDownIcon } from 'lucide-react';
 import SolanaWallet from '../components/SolanaWallet';
 import EthWallet from '../components/ETHWallet';
 import MnemonicContainer from '../components/MnemonicContainer';
@@ -85,15 +84,6 @@ const Home = () => {
               </div>
             </>
           )}
-        </motion.div>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-        >
-          <ChevronDownIcon className="w-10 h-10 text-white animate-bounce" />
         </motion.div>
       </section>
     </div>
