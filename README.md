@@ -20,6 +20,14 @@
 ## Overview
 
 **Wallet Generator** is a React-based web application that allows users to generate secure mnemonic seed phrases for cryptocurrency wallets. Leveraging the BIP39 standard, the application facilitates the creation of seed phrases which can be used to set up wallets for both Solana and Ethereum networks. This tool is essential for developers and enthusiasts looking to manage their crypto assets securely.
+## Repository Metrics
+
+| Metric           | Value                                                                                     |
+|------------------|-------------------------------------------------------------------------------------------|
+| ![GitHub Stars](https://img.shields.io/github/stars/VedantAnand17/Web3-Wallet?style=social) | ![GitHub Forks](https://img.shields.io/github/forks/VedantAnand17/Web3-Wallet?style=social) |
+| ![GitHub Issues](https://img.shields.io/github/issues/VedantAnand17/Web3-Wallet) | ![GitHub Pull Requests](https://img.shields.io/github/issues-pr/VedantAnand17/Web3-Wallet) |
+| ![GitHub Contributors](https://img.shields.io/github/contributors/VedantAnand17/Web3-Wallet) | ![GitHub License](https://img.shields.io/github/license/VedantAnand17/Web3-Wallet) |
+
 
 ## Features
 
