@@ -1,113 +1,48 @@
 <!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My React App</title>
+    <title>Vite + React</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .app {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .app-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .dynamic-content {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        input {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            margin-right: 10px;
-        }
-        button {
-            padding: 10px 15px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            padding: 8px;
-            border-bottom: 1px solid #ddd;
-        }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Full viewport height */
+        margin: 0;
+        background-color: #f5f5f5; /* Light background for contrast */
+      }
+
+      .logo-container {
+        text-align: center; /* Center the logo */
+      }
+
+      .logo {
+        width: 200px; /* Adjust logo width */
+        height: auto; /* Maintain aspect ratio */
+        border: 2px solid #333; /* Optional border for visibility */
+        border-radius: 10px; /* Rounded corners */
+        padding: 10px; /* Space around the logo */
+        background-color: #fff; /* White background for contrast */
+      }
+
+      /* Optional: Add hover effect */
+      .logo:hover {
+        transform: scale(1.05); /* Slightly enlarge the logo on hover */
+        transition: transform 0.3s; /* Smooth transition */
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div id="root"></div>
-    <script type="module">
-        import React, { useState } from 'https://cdn.skypack.dev/react';
-        import ReactDOM from 'https://cdn.skypack.dev/react-dom';
 
-        const DynamicContent = () => {
-            const [items, setItems] = useState([]);
-            const [inputValue, setInputValue] = useState('');
+    <div class="logo-container">
+      <img src="/path/to/your/logo.png" alt="Logo" class="logo" />
+      <h1>Your Brand Name</h1> <!-- Optional: Add a title below the logo -->
+    </div>
 
-            const addItem = () => {
-                if (inputValue.trim() !== '') {
-                    setItems([...items, inputValue]);
-                    setInputValue('');
-                }
-            };
-
-            return (
-                <div className="dynamic-content">
-                    <h2>Dynamic Content List</h2>
-                    <input
-                        type="text"
-                        value={inputValue}
-                        onChange={(e) => setInputValue(e.target.value)}
-                        placeholder="Add new item"
-                    />
-                    <button onClick={addItem}>Add Item</button>
-                    <ul>
-                        {items.map((item, index) => (
-                            <li key={index}>{item}</li>
-                        ))}
-                    </ul>
-                </div>
-            );
-        };
-
-        const App = () => {
-            return (
-                <div className="app">
-                    <header className="app-header">
-                        <h1>Welcome to My React App</h1>
-                        <p>This is a simple app with dynamic content.</p>
-                    </header>
-                    <main>
-                        <DynamicContent />
-                    </main>
-                    <footer>
-                        <p>&copy; 2024 My React App. All rights reserved.</p>
-                    </footer>
-                </div>
-            );
-        };
-
-        ReactDOM.render(<App />, document.getElementById('root'));
-    </script>
-</body>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
