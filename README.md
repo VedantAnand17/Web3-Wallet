@@ -177,4 +177,14 @@ If you have any questions, suggestions, or feedback, feel free to reach out!
 - **Email:** vedantanand.in@gmail.com
 - **GitHub:** [VedantAnand17](https://github.com/VedantAnand17)
 
+
+## 
+
+| Metric                | Count  |
+|-----------------------|--------|
+| Stars                 |    5    |
+| Forks                 |    30    |
+| Open Issues           |    6    |
+| Open Pull Requests    |    12     |
+| Contributors          |    6    |
 ---
