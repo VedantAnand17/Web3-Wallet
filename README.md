@@ -177,4 +177,10 @@ If you have any questions, suggestions, or feedback, feel free to reach out!
 - **Email:** vedantanand.in@gmail.com
 - **GitHub:** [VedantAnand17](https://github.com/VedantAnand17)
 
+## Repository Metrics
+
+| ⭐ Stars | 🍴 Forks | 🐛 Issues | 🔔 Open PRs | 📝 Closed PRs |
+|---------|---------|----------|------------|--------------|
+| ![GitHub stars](https://img.shields.io/github/stars/VedantAnand17/Web3-Wallet) | ![GitHub forks](https://img.shields.io/github/forks/VedantAnand17/Web3-Wallet) | ![GitHub issues](https://img.shields.io/github/issues/VedantAnand17/Web3-Wallet) | ![GitHub open pull requests](https://img.shields.io/github/issues-pr-raw/VedantAnand17/Web3-Wallet) | ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/VedantAnand17/Web3-Wallet) 
+
 ---
