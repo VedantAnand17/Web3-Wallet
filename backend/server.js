@@ -1,28 +1,37 @@
+// Import the required modules
 const express = require('express');
+const cors = require('cors');
+
+// Create an instance of the express app
 const app = express();
-const PORT = 3001; // You can change this port if needed
 
-// Middleware to parse JSON requests
+// Middleware to parse JSON
 app.use(express.json());
+app.use(cors());
 
-// Your endpoint to handle wallet generation
-app.post('/generate-wallet', (req, res) => {
-    // Here you will transfer the logic from ETHWallet.jsx
-    // Example logic (replace this with actual wallet generation logic)
-    const { network } = req.body; // Assuming you're sending the network type
-    let wallet;
-
-    if (network === 'ethereum') {
-        // Add logic for generating Ethereum wallet
-        wallet = { address: 'ETH_WALLET_ADDRESS', mnemonic: 'ETH_MNEMONIC' }; // Dummy values
-    } else if (network === 'solana') {
-        // Add logic for generating Solana wallet
-        wallet = { address: 'SOLANA_WALLET_ADDRESS', mnemonic: 'SOLANA_MNEMONIC' }; // Dummy values
-    }
-
-    res.json(wallet);
+// Define a basic route for testing
+app.get('/', (req, res) => {
+  res.send('Hello World from the Express server!');
 });
 
+// Example of how you might handle wallet-related logic
+app.post('/wallet', (req, res) => {
+  const { action, data } = req.body; // action can be 'create', 'send', etc.
+
+  // You can implement your wallet logic here, for example:
+  if (action === 'create') {
+    // Logic to create a wallet
+    res.json({ message: 'Wallet created successfully', wallet: data });
+  } else if (action === 'send') {
+    // Logic to send coins
+    res.json({ message: 'Coins sent successfully', transaction: data });
+  } else {
+    res.status(400).json({ error: 'Invalid action' });
+  }
+});
+
+// Start the server on port 3001
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-    console.log('Server is running on http://localhost:${PORT}');
+  console.log('Server is running on http://localhost:${PORT}');
 });
