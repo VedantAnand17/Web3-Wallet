@@ -27,7 +27,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
     "tweetnacl": "^1.0.3",
-    "vite-plugin-node-polyfills": "^0.22.0"
+    "vite-plugin-node-polyfills": "^0.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
