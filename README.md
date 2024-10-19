@@ -165,6 +165,29 @@ Contributions are welcome! Please follow these steps to contribute:
 
    Navigate to the original repository and click "Compare & pull request" to submit your changes for review.
 
+# Project Name
+
+## Metrics
+
+| Metric                  | Description                                             | Value         |
+|-------------------------|---------------------------------------------------------|---------------|
+| Total Contributors       | Number of people contributing to the project            | 15            |
+| Stars on GitHub          | Number of stars the project has received on GitHub      | 300           |
+| Forks on GitHub          | Number of forks of the repository on GitHub             | 50            |
+| Issues Open              | Total number of open issues in the project              | 10            |
+| Issues Closed            | Total number of closed issues in the project            | 200           |
+| Pull Requests Open       | Number of open pull requests                            | 5             |
+| Pull Requests Merged     | Number of pull requests merged into the project         | 100           |
+| Test Coverage            | Percentage of code covered by tests                     | 85%           |
+| Latest Release Version   | Version of the most recent release                      | v1.2.3        |
+| Last Updated             | Date of the last update                                 | January 20, 2024 |
+
+<p align="center">
+  <em>Note: This table provides current project statistics. It is updated regularly to reflect changes.</em>
+</p>
+
+   
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
