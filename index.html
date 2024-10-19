@@ -1,13 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propacity - Courses</title>
+    <link rel="shortcut icon" href="./src/assets/icons/logo.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: white;
+            margin: 10px 0;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .App {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+    <script>
+        // Sample data for courses
+        const courses = [
+            { id: 1, title: "Basics of C++", description: "Learn the fundamentals of C++ programming." },
+            { id: 2, title: "Data Structures in Java", description: "Master DSA with Java from basics to advanced." },
+            { id: 3, title: "Introduction to Python", description: "Get started with Python programming." },
+            { id: 4, title: "Web Development", description: "Build responsive websites with HTML, CSS, and JavaScript." }
+        ];
+
+        // Function to render courses
+        function renderCourses() {
+            const root = document.getElementById('root');
+            root.innerHTML = `<h1>Available Courses</h1>`;
+            const ul = document.createElement('ul');
+
+            courses.forEach(course => {
+                const li = document.createElement('li');
+                li.innerHTML = `<h3>${course.title}</h3><p>${course.description}</p>`;
+                ul.appendChild(li);
+            });
+
+            root.appendChild(ul);
+        }
+
+        // Initial rendering of courses
+        renderCourses();
+    </script>
+
+</body>
 </html>
