@@ -1,33 +1,39 @@
 import { useState } from "react";
-import { mnemonicToSeed } from "bip39";
-import { Wallet, HDNodeWallet } from "ethers";
 
-const EthWallet = ({ mnemonic }) => {
+function EthWallet({ mnemonic }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [addresses, setAddresses] = useState([]);
     const [buttonText, setButtonText] = useState('Add Ethereum Wallet');
     const [isWalletAdded, setIsWalletAdded] = useState(false);
 
     const handleAddWallet = async () => {
-        const seed = await mnemonicToSeed(mnemonic);
-        const derivationPath = `m/44'/60'/${currentIndex}'/0'`;
-        const hdNode = HDNodeWallet.fromSeed(seed);
-        const child = hdNode.derivePath(derivationPath);
-        const privateKey = child.privateKey;
-        const wallet = new Wallet(privateKey);
+        try {
+            const response = await fetch('http://localhost:5000/api/wallets/eth', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ mnemonic, currentIndex }),
+            });
 
-        setCurrentIndex(currentIndex + 1);
-        setAddresses([...addresses, wallet.address]);
+            const data = await response.json();
+            if (response.ok) {
+                setAddresses([...addresses, data.address]);
+                setCurrentIndex(currentIndex + 1);
+                // Change button text and color after adding wallet
+                setButtonText('Wallet Added!');
+                setIsWalletAdded(true);
 
-        // Change button text and color after adding wallet
-        setButtonText('Wallet Added!');
-        setIsWalletAdded(true);
-
-        // Reset the button text after 2 seconds
-        setTimeout(() => {
-            setButtonText('Add Ethereum Wallet');
-            setIsWalletAdded(false);
-        }, 2000);
+                // Reset the button text after 2 seconds
+                setTimeout(() => {
+                    setButtonText('Add Ethereum Wallet');
+                    setIsWalletAdded(false);
+                }, 2000);
+            } else {
+                console.error('Error:', data.message);
+                alert(data.message); // Alert the user if there's an error
+            }
+        } catch (error) {
+            console.error('Error adding wallet:', error);
+        }
     };
 
     return (
@@ -41,13 +47,15 @@ const EthWallet = ({ mnemonic }) => {
                 {buttonText}
             </button>
 
-            {addresses.map((address, index) => (
-                <div key={index} className="max-md:text-xs">
-                    Eth - {address}
-                </div>
-            ))}
+            <div className="max-md:text-xs">
+                {addresses.map((address, index) => (
+                    <div key={index} className="shrink">
+                        Eth - {address}
+                    </div>
+                ))}
+            </div>
         </div>
     );
-};
+}
 
 export default EthWallet;
