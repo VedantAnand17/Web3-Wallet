@@ -15,7 +15,7 @@ const MnemonicCard = ({ word }) => {
         </div>
       </div>
     </motion.div>
-  );
+  );asdasd
 };
 
 MnemonicCard.propTypes = {
