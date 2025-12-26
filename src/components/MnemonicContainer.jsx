@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import MnemonicCard from './MnemonicCard';
 import CopyButton from './CopyButton';
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from './ui/Card';
+import { ShieldCheck } from 'lucide-react';
 
 const MnemonicContainer = ({ mnemonic }) => {
   if (!mnemonic) return null;
@@ -14,59 +16,60 @@ const MnemonicContainer = ({ mnemonic }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl shadow-xl border border-gray-700 backdrop-blur-lg"
+      className="w-full"
     >
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-        className="text-center mb-6"
-      >
-        <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-2">
-          Your Seed Phrase
-        </h2>
-        <p className="text-gray-300">
-          Keep it safe and{' '}
-          <span className="text-red-500 font-semibold">
-            away from scammers
-          </span>
-        </p>
-      </motion.div>
-
-      <motion.div 
-        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-8"
-        variants={{
-          hidden: { opacity: 0 },
-          show: {
-            opacity: 1,
-            transition: {
-              staggerChildren: 0.1
-            }
-          }
-        }}
-        initial="hidden"
-        animate="show"
-      >
-        {words.map((word, index) => (
+      <Card className="bg-black/40 border-white/10 backdrop-blur-2xl">
+        <CardHeader className="text-center pb-2">
           <motion.div
-            key={index}
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              show: { opacity: 1, y: 0 }
-            }}
-            className="relative"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+            className="flex flex-col items-center"
           >
-            <div className="absolute -top-3 -left-3 w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-sm z-10">
-              {index + 1}
+            <div className="p-3 bg-primary-500/10 rounded-full mb-4 ring-1 ring-primary-500/20">
+              <ShieldCheck className="w-8 h-8 text-primary-400" />
             </div>
-            <MnemonicCard word={word} />
+            <CardTitle className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+              Your Secret Recovery Phrase
+            </CardTitle>
+            <p className="text-gray-400 mt-2 text-sm max-w-md">
+              Write these words down and store them in a safe place.
+              <span className="text-red-400 font-medium ml-1">Do not share them with anyone.</span>
+            </p>
           </motion.div>
-        ))}
-      </motion.div>
+        </CardHeader>
 
-      <div className="flex justify-center mt-6">
-        <CopyButton text={mnemonic} />
-      </div>
+        <CardContent>
+          <motion.div
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mt-4"
+            variants={{
+              show: { transition: { staggerChildren: 0.05 } }
+            }}
+            initial="hidden"
+            animate="show"
+          >
+            {words.map((word, index) => (
+              <motion.div
+                key={index}
+                variants={{
+                  hidden: { opacity: 0, y: 10 },
+                  show: { opacity: 1, y: 0 }
+                }}
+                className="relative"
+              >
+                <div className="absolute -top-2 -left-2 w-6 h-6 bg-white/10 rounded-full flex items-center justify-center text-xs font-mono text-gray-400 z-10 border border-white/5">
+                  {index + 1}
+                </div>
+                <MnemonicCard word={word} />
+              </motion.div>
+            ))}
+          </motion.div>
+        </CardContent>
+
+        <CardFooter className="justify-center border-t border-white/5 pt-6 bg-white/5">
+          <CopyButton text={mnemonic} />
+        </CardFooter>
+      </Card>
     </motion.div>
   );
 };

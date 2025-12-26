@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { motion } from 'framer-motion';
 import { Copy, CheckCircle } from 'lucide-react';
+import { Button } from './ui/Button';
 
 const CopyButton = ({ text }) => {
   const [isCopied, setIsCopied] = useState(false);
@@ -16,27 +16,21 @@ const CopyButton = ({ text }) => {
   };
 
   return (
-    <motion.button
-      className={`flex items-center justify-center space-x-2 p-3 rounded-full text-white transition-all duration-300 ${
-        isCopied
-          ? 'bg-green-500 hover:bg-green-600'
-          : 'bg-indigo-500 hover:bg-indigo-600'
-      }`}
+    <Button
+      variant={isCopied ? "default" : "secondary"}
+      size="sm"
+      className={`transition-all duration-300 ${isCopied ? 'bg-green-500 hover:bg-green-600 border-green-500' : ''}`}
       onClick={handleCopy}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3 }}
     >
-      {isCopied ? <CheckCircle size={24} /> : <Copy size={24} />}
+      {isCopied ? <CheckCircle className="w-4 h-4 mr-2" /> : <Copy className="w-4 h-4 mr-2" />}
       <span>{isCopied ? 'Copied' : 'Copy'}</span>
-    </motion.button>
+    </Button>
   );
 };
 
 CopyButton.propTypes = {
   text: PropTypes.string.isRequired,
+  // className: PropTypes.string, // Implicitly passed via styled component but good to know
 };
 
 export default CopyButton;

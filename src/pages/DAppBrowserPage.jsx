@@ -1,5 +1,8 @@
 import React, { useState, useRef, Suspense, lazy } from 'react';
-import { Globe, Loader } from 'lucide-react';
+import { Globe, Loader, Search } from 'lucide-react';
+import { Button } from '../components/ui/Button';
+import { Input } from '../components/ui/Input';
+import { Card } from '../components/ui/Card';
 
 const LazyIframe = lazy(() => new Promise(resolve => {
   setTimeout(() => {
@@ -34,48 +37,57 @@ const DAppBrowser = () => {
   };
 
   return (
-    <div className="dapp-browser bg-gradient-to-br from-purple-900 to-indigo-900 min-h-screen text-white p-4 sm:p-8">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-8 text-center">
-          <Globe className="inline-block mr-2 mb-1" />
-          Web3 DApp Browser
-        </h1>
-        <div className="dapp-browser-controls bg-gray-800 p-3 sm:p-4 rounded-lg shadow-lg mb-4 sm:mb-8">
-          <div className="flex items-center">
-            <input
-              ref={inputRef}
-              type="text"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder="Enter DApp URL"
-              className="flex-grow p-2 sm:p-3 bg-gray-700 text-white rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <button 
-              onClick={loadDApp} 
-              className="p-2 sm:p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-r-md transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              Load DApp
-            </button>
+    <div className="min-h-screen bg-dark text-white pt-24 px-4 sm:px-8">
+      {/* Background Ambience */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-[20%] right-[20%] w-[30%] h-[30%] bg-primary-600/10 rounded-full blur-[100px]" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto h-[calc(100vh-8rem)] flex flex-col">
+        <div className="text-center mb-8">
+          <h1 className="text-3xl sm:text-4xl font-display font-bold mb-6 flex items-center justify-center">
+            <Globe className="mr-3 text-primary-400" />
+            Web3 DApp Browser
+          </h1>
+
+          <div className="max-w-2xl mx-auto flex gap-2">
+            <div className="relative flex-grow">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 w-4 h-4" />
+              <Input
+                ref={inputRef}
+                type="text"
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder="Enter DApp URL (e.g. https://uniswap.org)"
+                className="pl-10 bg-white/5 border-white/10"
+              />
+            </div>
+            <Button onClick={loadDApp} variant="premium">
+              Go
+            </Button>
           </div>
         </div>
-        <div className="dapp-browser-content bg-gray-800 rounded-lg shadow-lg" style={{ height: 'calc(100vh - 200px)' }}>
-          <Suspense fallback={
-            <div className="flex items-center justify-center h-full">
-              <Loader className="animate-spin mr-2" />
-              <span>Loading DApp...</span>
-            </div>
-          }>
-            {currentDApp ? (
-              <LazyIframe src={currentDApp} title="DApp Browser" />
-            ) : (
-              <div className="flex flex-col items-center justify-center h-full">
-                <Globe className="mb-4 text-blue-400" size={64} />
-                <p className="text-xl text-center">Enter a URL and click 'Load DApp' to interact with a decentralized application.</p>
+
+        <Card className="flex-grow bg-white/5 border-white/10 overflow-hidden relative">
+          <div className="w-full h-full bg-black/40">
+            <Suspense fallback={
+              <div className="flex items-center justify-center h-full">
+                <Loader className="animate-spin mr-2 text-primary-400" />
+                <span className="text-gray-400">Loading DApp...</span>
               </div>
-            )}
-          </Suspense>
-        </div>
+            }>
+              {currentDApp ? (
+                <LazyIframe src={currentDApp} title="DApp Browser" />
+              ) : (
+                <div className="flex flex-col items-center justify-center h-full text-gray-500">
+                  <Globe className="mb-4 text-white/10" size={64} />
+                  <p className="text-lg">Enter a URL to browse decentralized applications.</p>
+                </div>
+              )}
+            </Suspense>
+          </div>
+        </Card>
       </div>
     </div>
   );

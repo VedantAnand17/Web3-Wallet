@@ -5,14 +5,14 @@ import { motion } from 'framer-motion';
 const MnemonicCard = ({ word }) => {
   return (
     <motion.div
-      className="bg-gradient-to-br from-gray-700 to-gray-800 p-4 rounded-xl shadow-lg border border-gray-600 backdrop-blur-lg"
-      whileHover={{ scale: 1.05 }}
-      transition={{ duration: 0.2 }}
+      className="group relative bg-white/5 hover:bg-white/10 p-4 rounded-xl border border-white/10 backdrop-blur-md transition-all duration-300 overflow-hidden"
+      whileHover={{ y: -2 }}
     >
-      <div className="text-center">
-        <div className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="text-center relative z-10">
+        <span className="font-display font-bold text-lg text-gray-200 group-hover:text-white transition-colors">
           {word}
-        </div>
+        </span>
       </div>
     </motion.div>
   );
