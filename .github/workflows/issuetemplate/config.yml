@@ -1,0 +1,5 @@
+issue_template:
+   feature: .github/workflows/issuetemplate/feature.md
+   documentation: .github/workflows/issuetempla/documentation.md
+   bug: .github/workflows/issuetempla/bug.md
+   other: .github/workflows/issuetempla/other.md
