@@ -5,9 +5,44 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Full viewport height */
+        margin: 0;
+        background-color: #f5f5f5; /* Light background for contrast */
+      }
+
+      .logo-container {
+        text-align: center; /* Center the logo */
+      }
+
+      .logo {
+        width: 200px; /* Adjust logo width */
+        height: auto; /* Maintain aspect ratio */
+        border: 2px solid #333; /* Optional border for visibility */
+        border-radius: 10px; /* Rounded corners */
+        padding: 10px; /* Space around the logo */
+        background-color: #fff; /* White background for contrast */
+      }
+
+      /* Optional: Add hover effect */
+      .logo:hover {
+        transform: scale(1.05); /* Slightly enlarge the logo on hover */
+        transition: transform 0.3s; /* Smooth transition */
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
+
+    <div class="logo-container">
+      <img src="/path/to/your/logo.png" alt="Logo" class="logo" />
+      <h1>Your Brand Name</h1> <!-- Optional: Add a title below the logo -->
+    </div>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
