@@ -543,6 +543,12 @@ copies or substantial portions of the Software.
 
 </div>
 
+## Repository Metrics
+
+| ⭐ Stars | 🍴 Forks | 🐛 Issues | 🔔 Open PRs | 📝 Closed PRs |
+|---------|---------|----------|------------|--------------|
+| ![GitHub stars](https://img.shields.io/github/stars/VedantAnand17/Web3-Wallet) | ![GitHub forks](https://img.shields.io/github/forks/VedantAnand17/Web3-Wallet) | ![GitHub issues](https://img.shields.io/github/issues/VedantAnand17/Web3-Wallet) | ![GitHub open pull requests](https://img.shields.io/github/issues-pr-raw/VedantAnand17/Web3-Wallet) | ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/VedantAnand17/Web3-Wallet) 
+
 ---
 
 ### 🙏 Acknowledgments
