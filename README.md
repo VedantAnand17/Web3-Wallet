@@ -543,6 +543,17 @@ copies or substantial portions of the Software.
 
 </div>
 
+## Repository Metrics
+
+| Metric                | Count  |
+|-----------------------|--------|
+| Stars                 |  5     |
+| Forks                 |  22      |
+| Open Issues           |  6     |
+| Open Pull Requests    |  2     |
+| Contributors          |  6     |
+
+
 ---
 
 ### 🙏 Acknowledgments
